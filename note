@@ -1,0 +1,3 @@
+POPULAR MOVIE 
+UPCOMING /titles/x/upcoming
+GET MAIN ACTORS /titles/{id}/main_actors

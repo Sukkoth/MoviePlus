@@ -1,0 +1,65 @@
+.movies {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+
+.movies h1 {
+    width: 100%;
+    padding: 20rem 40rem;
+    text-align: center;
+    color: var(--color-red-light);
+}
+
+.movies .movie {
+    width: 16rem;
+    height: 28rem;
+    padding: 1rem;
+    position: relative;
+    text-align: start;
+    cursor: pointer;
+}
+
+.movies .movie .badge {
+    position: absolute;
+    left: 42%;
+    top: -8%;
+    background-color: rgb(224, 224, 20);
+    padding: 0.6rem;
+    border-radius: 40%;
+    z-index: 1;
+    font-size: xx-large;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.movie .cover-container {
+    width: 16rem;
+    height: 23rem;
+    overflow: hidden;
+}
+
+.movie .cover-container img {
+    width: 100%;
+    height: 100%;
+    transition: 800ms;
+    object-fit: cover;
+}
+
+.movie .cover-container img:hover {
+    transform: scale(1.1);
+    transition: transform 800ms;
+    filter: grayscale(0.5);
+}
+
+.movie .movie-title {
+    font-size: larger;
+    margin: 0.5rem;
+}
+
+.movie .category {
+    color: rgb(145, 144, 144);
+    margin: 0;
+    margin-left: 0.5rem;
+}

@@ -1,0 +1,27 @@
+.pagination {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    margin: auto;
+    margin-top: 2rem;
+}
+
+.page {
+    border: solid 1px var(--color-red-light);
+    padding: 0.6rem 1.3rem;
+    background: none;
+    color: var(--text-color-white);
+    margin-block: auto;
+    transition: transform 500ms ease-out;
+}
+
+.page:hover {
+    transform: scale(1.2);
+    transition: transform 500ms ease-in;
+    cursor: pointer;
+}
+
+.number {
+    background-color: var(--color-red-light);
+    color: var(--text-color-white);
+}

@@ -1,0 +1,34 @@
+.genres {
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+    list-style: none;
+    overflow-x: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    width: 87.8%;
+}
+
+.genres::-webkit-scrollbar {
+    display: none;
+}
+
+.genre {
+    border: solid 1px var(--color-red-light);
+    padding: 0.8rem 1.5rem;
+    text-align: center;
+    margin-block: auto;
+    transition: 500ms;
+    white-space: nowrap;
+}
+
+.genres .active {
+    background-color: var(--color-red-light);
+    color: var(--text-color-white);
+}
+
+.genre:hover {
+    transform: scale(1.2);
+    transition: transform 500ms;
+    cursor: pointer;
+}

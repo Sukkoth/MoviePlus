@@ -1,0 +1,46 @@
+.movie-details {
+    display: flex;
+    flex-direction: row;
+    gap: 3rem;
+    padding: 2rem;
+}
+
+.movie-details h1 {
+    font-size: 4rem;
+    font-weight: 500;
+    letter-spacing: 3px;
+    margin-bottom: 1rem;
+}
+
+.movie-details h1 span {
+    float: right;
+    margin-right: 8rem;
+    background-color: var(--color-red-light);
+    border-radius: 50%;
+    padding: 1rem 0.8rem;
+    font-size: 2rem;
+}
+
+.movie-details .poster {
+    width: 35rem;
+}
+
+.movie-details .poster img {
+    width: 100%;
+    object-fit: cover;
+}
+
+.movie-details .plot {
+    width: 70%;
+    line-height: 2rem;
+    color: white;
+}
+
+.movie-details p .strong {
+    color: grey;
+    font-weight: bolder;
+}
+
+.movie-details p {
+    margin-block: 2rem;
+}
