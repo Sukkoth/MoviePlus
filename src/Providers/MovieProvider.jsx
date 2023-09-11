@@ -7,7 +7,7 @@ export const MovieContext = createContext({});
 
 const MovieProvider = ({ children }) => {
     const navigate = useNavigate();
-    const [selection, setSelection] = useState('popular');
+    const [selection, setSelection] = useState('topBoxOffice');
     const [genre, setGenre] = useState('');
     const [genres] = useState([
         'Action',
@@ -39,9 +39,13 @@ const MovieProvider = ({ children }) => {
         'Western',
     ]);
     const [page, setPage] = useState(1);
-
+    const [favourites, setFavourites] = useState(
+        JSON.parse(localStorage.getItem('moviePlus')) || []
+    );
+    const [search, setSearch] = useState('');
     function handleSelectionChange(selectionTobeSet) {
-        setSelection((prev) => selectionTobeSet);
+        setSearch(null);
+        setSelection(selectionTobeSet);
         setPage(1);
         if (location.pathname !== '/') {
             navigate('/');
@@ -53,7 +57,34 @@ const MovieProvider = ({ children }) => {
         setPage(1);
     }
 
-    const { movies, error, isLoading } = useFetchMovies(selection, genre, page);
+    function handleFavouriteAction(movie) {
+        const found = favourites.find((mov) => mov?.id === movie?.id);
+
+        if (found?.id) {
+            setFavourites((prev) =>
+                prev.filter((mov) => mov?.id !== movie?.id)
+            );
+
+            return localStorage.setItem(
+                'moviePlus',
+                JSON.stringify(
+                    [...favourites].filter((mov) => mov?.id !== movie?.id)
+                )
+            );
+        }
+        setFavourites((prev) => [...prev, movie]);
+        localStorage.setItem(
+            'moviePlus',
+            JSON.stringify([...favourites, movie])
+        );
+    }
+
+    const { movies, error, isLoading } = useFetchMovies(
+        selection,
+        genre,
+        page,
+        search
+    );
 
     return (
         <MovieContext.Provider
@@ -68,6 +99,10 @@ const MovieProvider = ({ children }) => {
                 handleGenreChange,
                 page,
                 setPage,
+                favourites,
+                handleFavouriteAction,
+                search,
+                setSearch,
             }}
         >
             {children}

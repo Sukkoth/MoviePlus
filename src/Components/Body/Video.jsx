@@ -5,11 +5,13 @@ import './video.styles.css';
 
 const Video = ({ title }) => {
     const [videos, setVideos] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
     const query = title.split(' ').join('+');
 
     useEffect(() => {
         const fetchYoutubeLinks = async () => {
             try {
+                setIsLoading(true);
                 const response = await axios.get(
                     'https://simple-youtube-search.p.rapidapi.com/search',
                     {
@@ -21,13 +23,17 @@ const Video = ({ title }) => {
                         },
 
                         params: {
-                            query: query + 'trailer',
+                            query: query + 'Official Trailer',
                         },
                     }
                 );
-                setVideos(response.data?.results);
+                setVideos(
+                    response.data?.results?.sort((a, b) => b?.views - a?.views)
+                );
             } catch (error) {
                 console.log(error);
+            } finally {
+                setIsLoading(false);
             }
         };
         fetchYoutubeLinks();
@@ -39,9 +45,11 @@ const Video = ({ title }) => {
             <p style={{ color: 'var(--color-red-light', margin: 0 }}>
                 NB: May not be exact result
             </p>
-            {videos.length > 0 &&
+            {isLoading && <h3>Loading. . . </h3>}
+            {!isLoading &&
+                videos.length > 0 &&
                 videos
-                    ?.splice(0, 5)
+                    ?.splice(-5)
                     ?.map((video, index) => (
                         <iframe
                             width='800'
@@ -54,7 +62,9 @@ const Video = ({ title }) => {
                             key={index}
                         ></iframe>
                     ))}
-            {videos?.length === 0 && <h3>No YouTube videos found</h3>}
+            {!isLoading && videos?.length === 0 && (
+                <h3>No YouTube videos found</h3>
+            )}
         </div>
     );
 };

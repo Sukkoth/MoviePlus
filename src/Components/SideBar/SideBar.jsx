@@ -10,9 +10,11 @@ import {
     AiFillHeart,
 } from 'react-icons/ai';
 import { MdTheaters } from 'react-icons/md';
+import { useNavigate } from 'react-router-dom';
 const SideBar = () => {
-    const { selection, handleSelectionChange } = useContext(MovieContext);
-    console.log('selection', selection);
+    const navigate = useNavigate();
+    const { selection, handleSelectionChange, favourites } =
+        useContext(MovieContext);
     return (
         <div className='sidebar'>
             <div className='title'>
@@ -21,35 +23,44 @@ const SideBar = () => {
             <div className='selectors'>
                 <ul>
                     <li
-                        className={`${selection === 'popular' && 'active'}`}
+                        className={`${
+                            location.pathname === '/' &&
+                            selection === 'popular' &&
+                            'active'
+                        }`}
                         onClick={() => handleSelectionChange('popular')}
                     >
                         <p>
                             <span>
                                 <AiFillFire />
-                            </span>{' '}
+                            </span>
                             Popular
                         </p>
                     </li>
                     <li
                         className={`${
-                            selection === 'topBoxOffice' && 'active'
+                            location.pathname === '/' &&
+                            selection === 'topBoxOffice' &&
+                            'active'
                         }`}
                         onClick={() => handleSelectionChange('topBoxOffice')}
                     >
                         <p>
                             <span>
                                 <MdTheaters />
-                            </span>{' '}
+                            </span>
                             Top Box Office
                         </p>
                     </li>
                     <li
-                        className={`${selection === 'topRated' && 'active'}`}
+                        className={`${
+                            location.pathname === '/' &&
+                            selection === 'topRated' &&
+                            'active'
+                        }`}
                         onClick={() => handleSelectionChange('topRated')}
                     >
                         <p>
-                            {' '}
                             <span>
                                 <AiFillStar />
                             </span>
@@ -57,11 +68,14 @@ const SideBar = () => {
                         </p>
                     </li>
                     <li
-                        className={`${selection === 'upcoming' && 'active'}`}
+                        className={`${
+                            location.pathname === '/' &&
+                            selection === 'upcoming' &&
+                            'active'
+                        }`}
                         onClick={() => handleSelectionChange('upcoming')}
                     >
                         <p>
-                            {' '}
                             <span>
                                 <AiFillCalendar />
                             </span>
@@ -69,15 +83,23 @@ const SideBar = () => {
                         </p>
                     </li>
                     <li
-                        className={`${selection === 'Favourites' && 'active'}`}
-                        onClick={() => handleSelectionChange('Favourites')}
+                        className={`${
+                            location.pathname === '/favourites' && 'active'
+                        }`}
+                        onClick={() => navigate('favourites')}
                     >
                         <p>
-                            {' '}
                             <span>
                                 <AiFillHeart />
                             </span>
                             Favourites
+                            {favourites?.length ? (
+                                <span className='favourite-count'>
+                                    {favourites?.length}
+                                </span>
+                            ) : (
+                                ''
+                            )}
                         </p>
                     </li>
                 </ul>

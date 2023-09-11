@@ -65,3 +65,8 @@
     background-color: var(--color-black-light);
     color: var(--color-red-light);
 }
+
+.selectors ul li .favourite-count {
+    color: var(--color-red-light);
+    font-size: 1rem;
+}

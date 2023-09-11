@@ -29,12 +29,15 @@
     color: var(--color-text-white);
     font-size: large;
 }
+
 .top-bar .search input {
     background: none;
     outline: none;
     border: none;
     color: var(--color-text-white);
     font-size: large;
+    width: 20rem;
+    margin-right: 1rem;
 }
 
 .top-bar .search input::placeholder {
@@ -44,6 +47,16 @@
 
 .top-bar .search input:focus {
     border-bottom: 1px solid var(--color-text-white);
+}
+
+.top-bar .search .search-icon {
+    transition: transform 400ms;
+}
+
+.top-bar .search .search-icon:hover {
+    cursor: pointer;
+    transform: scale(1.4);
+    transition: transform 400ms;
 }
 
 .profile {

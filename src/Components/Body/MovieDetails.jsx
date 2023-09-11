@@ -26,7 +26,7 @@ const MovieDetails = () => {
     }, [movieId]);
     return (
         <div className='movie-details'>
-            {isLoading && <h1>Loading . . . </h1>}
+            {isLoading && <h2>Loading . . . </h2>}
             {!isLoading && data?.Title && (
                 <>
                     <div className='poster'>

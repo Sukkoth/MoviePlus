@@ -3,6 +3,7 @@ import './body-styles.css';
 import { Route, Routes } from 'react-router-dom';
 import Home from './Home';
 import MovieDetails from './MovieDetails';
+import Favourites from './Favourites';
 
 const Body = () => {
     return (
@@ -22,7 +23,8 @@ const Body = () => {
             <div className='main'>
                 <Routes>
                     <Route path='/' index element={<Home />} />
-                    <Route path='movie/:movieId' element={<MovieDetails />} />
+                    <Route path='/movie/:movieId' element={<MovieDetails />} />
+                    <Route path='/favourites' element={<Favourites />} />
                 </Routes>
             </div>
         </div>
