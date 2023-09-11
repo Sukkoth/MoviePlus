@@ -52,8 +52,6 @@ const Video = ({ title }) => {
                     ?.splice(-5)
                     ?.map((video, index) => (
                         <iframe
-                            width='800'
-                            height='455'
                             src={'https://www.youtube.com/embed/' + video?.id}
                             title='YouTube video player'
                             frameBorder='0'

@@ -1,9 +1,10 @@
 .sidebar {
     width: 15%;
     background-color: var(--color-black-dark);
-    height: 59.9rem;
+    height: 60.34rem;
     position: sticky;
     top: 0;
+    display: none;
 }
 
 .title {
@@ -69,4 +70,39 @@
 .selectors ul li .favourite-count {
     color: var(--color-red-light);
     font-size: 1rem;
+}
+
+@media screen and (min-device-width: 769px) and (max-device-width: 1024px) {
+    .sidebar {
+        display: block;
+        width: 25%;
+    }
+
+    .selectors ul li {
+        padding-inline: 1rem;
+        line-height: 3.5rem;
+    }
+
+    .title {
+        font-size: 0.8rem;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .sidebar {
+        display: block;
+        width: 25%;
+    }
+    .selectors ul li {
+        padding-inline: 2rem;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .sidebar {
+        width: 15%;
+    }
+    .title {
+        font-size: 1rem;
+    }
 }

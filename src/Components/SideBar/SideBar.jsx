@@ -1,7 +1,7 @@
 import { RiMovie2Line } from 'react-icons/ri';
 import './sidebar-styles.css';
 import PropTypes from 'prop-types';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { MovieContext } from '../../Providers/MovieProvider';
 import {
     AiFillFire,
@@ -15,8 +15,12 @@ const SideBar = () => {
     const navigate = useNavigate();
     const { selection, handleSelectionChange, favourites } =
         useContext(MovieContext);
+    const [showSideBar, setShowSideBar] = useState(false);
     return (
-        <div className='sidebar'>
+        <div
+            className='sidebar'
+            onClick={() => setShowSideBar((prev) => !prev)}
+        >
             <div className='title'>
                 <RiMovie2Line className='icon' /> MOVIE PLUS
             </div>

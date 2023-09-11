@@ -2,6 +2,8 @@
     display: flex;
     flex-wrap: wrap;
     margin-top: 2rem;
+    justify-content: center;
+    align-items: center;
 }
 
 .movies h1 {
@@ -62,4 +64,18 @@
     color: rgb(145, 144, 144);
     margin: 0;
     margin-left: 0.5rem;
+}
+
+@media screen and (max-width: 480px) {
+    .movies {
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .movies {
+        justify-content: center;
+        align-items: center;
+    }
 }

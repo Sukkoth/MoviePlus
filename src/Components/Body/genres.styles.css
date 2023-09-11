@@ -32,3 +32,14 @@
     transition: transform 500ms;
     cursor: pointer;
 }
+
+@media screen and (max-width: 768px) {
+    .genre {
+        padding: 0.3rem 0.8rem;
+    }
+}
+@media screen and (min-width: 768px) {
+    .genre {
+        padding: 0.5rem 1rem;
+    }
+}
